@@ -1,103 +1,110 @@
 package comtrade
 
-import "time"
+import (
+	"time"
+)
 
 type ComtradeCfg struct {
-	StationName   string    //厂站名称	station_name
-	RecDevID      string    //记录设备ID	rec_dev_id
-	RevYear       int32     //COMTRADE版本年份	rev_year
-	Total         int32     //总通道数	total
-	AnalogNum     int32     //模拟通道数	analog_num
-	DigtalNum     int32     //数字/状态通道数	digital_num
-	Lf            int32     //标称频率	lf
-	Nrates        int32     //采样率个数	nrates
-	Samp          int32     //采样率	samp
-	EndSamp       int32     //最末采样序号	end_samp
-	TriggerTime   time.Time //采样触发时间	trigger_time
-	FirstDataTime time.Time //第一条数据时间	first_data_time
-	Ft            string    //数据文件类型，ASCII或者BINARY或者BINARY32,FLOAT32	ft
+	StationName   string                //厂站名称	station_name
+	RecDevID      string                //记录设备ID	rec_dev_id
+	RevYear       uint16                //COMTRADE版本年份	rev_year	1991、1999、2013
+	Total         uint32                //总通道数	total
+	AnalogNum     uint32                //模拟通道数	analog_num
+	DigtalNum     uint32                //数字/状态通道数	digital_num
+	Analog        []ComtradeAnalogChan  //模拟通道	analog
+	Digital       []ComtradeDigitalChan //数字/状态通道	digital
+	Lf            float32               //标称频率	lf
+	Nrates        uint16                //采样率个数	nrates
+	Samp          []float32             //采样率	samp
+	EndSamp       []uint32              //最末采样序号	end_samp
+	FirstDataTime time.Time             //第一条数据时间	first_data_time
+	TriggerTime   time.Time             //采样触发时间	trigger_time
+	Ft            string                //数据文件类型，ASCII、INARY、BINARY32、FLOAT32	ft
 
 	// 2017
-	TimeMult  float64 //时间倍率因子	time_mult
-	TimeCode  int32   //时间编码	time_code
-	LocalCode int32   //本地编码	local_code
-	TmqCode   int32   //采样时间品质	tmq_code
-	Leapsec   int32   //闰秒标识符	leapsec
+	TimeMult  float32 //时间倍率因子	time_mult
+	TimeCode  string  //时间编码	time_code
+	LocalCode string  //本地编码	local_code
+	TmqCode   uint8   //采样时间品质	tmq_code
+	Leapsec   uint8   //闰秒标识符	leapsec
 }
 
-func ParseConfigFile(filePath string) (*ComtradeCfg, error) {
-	//TODO
-	return nil, nil
+func (cc *ComtradeCfg) GetStationName() string {
+	return cc.StationName
 }
 
-func (c *ComtradeCfg) GetStationName() string {
-	return c.StationName
+func (cc *ComtradeCfg) GetRecDevID() string {
+	return cc.RecDevID
 }
 
-func (c *ComtradeCfg) GetRecDevID() string {
-	return c.RecDevID
+func (cc *ComtradeCfg) GetRevYear() uint16 {
+	return cc.RevYear
 }
 
-func (c *ComtradeCfg) GetRevYear() int32 {
-	return c.RevYear
+func (cc *ComtradeCfg) GetTotal() uint32 {
+	return cc.Total
 }
 
-func (c *ComtradeCfg) GetTotal() int32 {
-	return c.Total
+func (cc *ComtradeCfg) GetAnalogNum() uint32 {
+	return cc.AnalogNum
 }
 
-func (c *ComtradeCfg) GetAnalogNum() int32 {
-	return c.AnalogNum
+func (cc *ComtradeCfg) GetDigtalNum() uint32 {
+	return cc.DigtalNum
 }
 
-func (c *ComtradeCfg) GetDigtalNum() int32 {
-	return c.DigtalNum
+func (cc *ComtradeCfg) GetLf() float32 {
+	return cc.Lf
 }
 
-func (c *ComtradeCfg) GetLf() int32 {
-	return c.Lf
+func (cc *ComtradeCfg) GetNrates() uint16 {
+	return cc.Nrates
 }
 
-func (c *ComtradeCfg) GetNrates() int32 {
-	return c.Nrates
+func (cc *ComtradeCfg) GetSamp() []float32 {
+	return cc.Samp
 }
 
-func (c *ComtradeCfg) GetSamp() int32 {
-	return c.Samp
+func (cc *ComtradeCfg) GetEndSamp() []uint32 {
+	return cc.EndSamp
 }
 
-func (c *ComtradeCfg) GetEndSamp() int32 {
-	return c.EndSamp
+func (cc *ComtradeCfg) GetTriggerTime() time.Time {
+	return cc.TriggerTime
 }
 
-func (c *ComtradeCfg) GetTriggerTime() time.Time {
-	return c.TriggerTime
+func (cc *ComtradeCfg) GetFirstDataTime() time.Time {
+	return cc.FirstDataTime
 }
 
-func (c *ComtradeCfg) GetFirstDataTime() time.Time {
-	return c.FirstDataTime
+func (cc *ComtradeCfg) GetFt() string {
+	return cc.Ft
 }
 
-func (c *ComtradeCfg) GetFt() string {
-	return c.Ft
+func (cc *ComtradeCfg) GetTimeMult() float32 {
+	return cc.TimeMult
 }
 
-func (c *ComtradeCfg) GetTimeMult() float64 {
-	return c.TimeMult
+func (cc *ComtradeCfg) GetTimeCode() string {
+	return cc.TimeCode
 }
 
-func (c *ComtradeCfg) GetTimeCode() int32 {
-	return c.TimeCode
+func (cc *ComtradeCfg) GetLocalCode() string {
+	return cc.LocalCode
 }
 
-func (c *ComtradeCfg) GetLocalCode() int32 {
-	return c.LocalCode
+func (cc *ComtradeCfg) GetTmqCode() uint8 {
+	return cc.TmqCode
 }
 
-func (c *ComtradeCfg) GetTmqCode() int32 {
-	return c.TmqCode
+func (cc *ComtradeCfg) GetLeapsec() uint8 {
+	return cc.Leapsec
 }
 
-func (c *ComtradeCfg) GetLeapsec() int32 {
-	return c.Leapsec
+func (cc *ComtradeCfg) GetAnalog() []ComtradeAnalogChan {
+	return cc.Analog
+}
+
+func (cc *ComtradeCfg) GetDigital() []ComtradeDigitalChan {
+	return cc.Digital
 }
