@@ -2,7 +2,7 @@ Translations: [English](README.md) | [简体中文](README_zh.md)
 
 ## 关于 go-comtrade
 
-> go-comtrade是用一个库，用来解析COMTRADE录波文件.
+> go-comtrade是一个go语言库，用来解析COMTRADE录波文件.
 
 ## 开始
 
