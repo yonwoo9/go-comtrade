@@ -1,3 +1,3 @@
 package comtrade
 
-const Release = "v0.0.1"
+const Release = "v0.0.2"

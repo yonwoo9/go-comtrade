@@ -10,6 +10,36 @@ Translations: [English](README.md) | [简体中文](README_zh.md)
 go get github.com/yonwoo9/go-comtrade
 ```
 
+## 使用
+
+```go
+package main
+
+import (
+	"flag"
+	"fmt"
+	"github.com/yonwoo9/go-comtrade"
+)
+
+var (
+	configFile = flag.String("config", "testdata/test1.cfg", "config file path")
+	dataFile   = flag.String("data", "testdata/test1.dat", "data file path")
+)
+
+func main() {
+	flag.Parse()
+
+	c, err := comtrade.ParseComtrade(*configFile, *dataFile)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(c.Conf)
+}
+```
+
+
 ## 开源协议
 
 go-comtrade是基于[MIT license](./LICENSE)协议的开源软件.

@@ -16,54 +16,54 @@ type ComtradeAnalogChan struct {
 	PS        string  //一次二次标识	ps
 }
 
-func (c ComtradeAnalogChan) GetAn() uint32 {
+func (c *ComtradeAnalogChan) GetAn() uint32 {
 	return c.An
 }
 
-func (c ComtradeAnalogChan) GetChId() string {
+func (c *ComtradeAnalogChan) GetChId() string {
 	return c.ChId
 }
 
-func (c ComtradeAnalogChan) GetPh() string {
+func (c *ComtradeAnalogChan) GetPh() string {
 	return c.Ph
 }
 
-func (c ComtradeAnalogChan) GetCcbm() string {
+func (c *ComtradeAnalogChan) GetCcbm() string {
 	return c.Ccbm
 }
 
-func (c ComtradeAnalogChan) GetUu() string {
+func (c *ComtradeAnalogChan) GetUu() string {
 	return c.Uu
 }
 
-func (c ComtradeAnalogChan) GetA() float32 {
+func (c *ComtradeAnalogChan) GetA() float32 {
 	return c.A
 }
 
-func (c ComtradeAnalogChan) GetB() float32 {
+func (c *ComtradeAnalogChan) GetB() float32 {
 	return c.B
 }
 
-func (c ComtradeAnalogChan) GetSkew() float32 {
+func (c *ComtradeAnalogChan) GetSkew() float32 {
 	return c.Skew
 }
 
-func (c ComtradeAnalogChan) GetMin() float32 {
+func (c *ComtradeAnalogChan) GetMin() float32 {
 	return c.Min
 }
 
-func (c ComtradeAnalogChan) GetMax() float32 {
+func (c *ComtradeAnalogChan) GetMax() float32 {
 	return c.Max
 }
 
-func (c ComtradeAnalogChan) GetPrimary() float32 {
+func (c *ComtradeAnalogChan) GetPrimary() float32 {
 	return c.Primary
 }
 
-func (c ComtradeAnalogChan) GetSecondary() float32 {
+func (c *ComtradeAnalogChan) GetSecondary() float32 {
 	return c.Secondary
 }
 
-func (c ComtradeAnalogChan) GetPS() string {
+func (c *ComtradeAnalogChan) GetPS() string {
 	return c.PS
 }
