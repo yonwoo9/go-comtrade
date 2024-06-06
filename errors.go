@@ -3,7 +3,7 @@ package comtrade
 import "github.com/pkg/errors"
 
 var (
-	ErrUnknowTypeOfData   = errors.New("unkonw type of data")
+	ErrUnknownTypeOfData  = errors.New("unknown type of data")
 	ErrInvalidFile        = errors.New("invalid file")
 	ErrReadFirstLine      = errors.New("read first line error")
 	ErrReadSecondLine     = errors.New("read second line error")

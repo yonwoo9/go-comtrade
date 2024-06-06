@@ -10,6 +10,6 @@ func init() {
 type Binary32Data struct {
 }
 
-func (b *Binary32Data) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*ComtradeData, error) {
-	return &ComtradeData{}, nil
+func (b *Binary32Data) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*Data, error) {
+	return &Data{}, nil
 }

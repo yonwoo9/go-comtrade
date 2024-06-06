@@ -1,29 +1,30 @@
 package comtrade
 
-type ComtradeDigitalChan struct {
-	Dn   uint32 //数字/状态通道索引号	dn
-	ChId string //通道标识		ch_id
-	Ph   string //通道相别标识	ph
-	Ccbm string //被监视的电路元件	ccbm
-	Y    uint8  //通道状态	y
+// DigitalChan 数字通道
+type DigitalChan struct {
+	Dn   uint32 `json:"dn"`    //数字/状态通道索引号
+	ChId string `json:"ch_id"` //通道标识
+	Ph   string `json:"ph"`    //通道相别标识
+	Ccbm string `json:"ccbm"`  //被监视的电路元件
+	Y    uint8  `json:"y"`     //通道状态
 }
 
-func (c *ComtradeDigitalChan) GetDn() uint32 {
+func (c *DigitalChan) GetDn() uint32 {
 	return c.Dn
 }
 
-func (c *ComtradeDigitalChan) GetChId() string {
+func (c *DigitalChan) GetChId() string {
 	return c.ChId
 }
 
-func (c *ComtradeDigitalChan) GetPh() string {
+func (c *DigitalChan) GetPh() string {
 	return c.Ph
 }
 
-func (c *ComtradeDigitalChan) GetCcbm() string {
+func (c *DigitalChan) GetCcbm() string {
 	return c.Ccbm
 }
 
-func (c *ComtradeDigitalChan) GetY() uint8 {
+func (c *DigitalChan) GetY() uint8 {
 	return c.Y
 }

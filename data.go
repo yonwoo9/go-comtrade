@@ -1,29 +1,29 @@
 package comtrade
 
-// ComtradeData is the data of a comtrade file.
-type ComtradeData struct {
-	AnalogData  []ComtradeAnalogData
-	DigitalData []ComtradeDigitalData
+// Data is the data of a comtrade file.
+type Data struct {
+	AnalogData  []AnalogData
+	DigitalData []DigitalData
 }
 
-// ComtradeAnalogData is the analog data of a comtrade file.
-type ComtradeAnalogData struct {
-	N         uint32  //模拟通道序号 n
-	Timestamp uint32  //模拟通道时标 timestamp
-	Data      []int32 //模拟通道数据 data
+// AnalogData is the analog data of a comtrade file.
+type AnalogData struct {
+	N         uint32  `json:"n"`         //模拟通道序号
+	Timestamp uint32  `json:"timestamp"` //模拟通道时标
+	Data      []int32 `json:"data"`      //模拟通道数据
 }
 
-// ComtradeDigitalData is the digital data of a comtrade file.
-type ComtradeDigitalData struct {
-	N         uint32  //数字通道序号 n
-	Timestamp uint32  //数字通道时标 timestamp
-	Data      []uint8 //数字通道数据 data
+// DigitalData is the digital data of a comtrade file.
+type DigitalData struct {
+	N         uint32  `json:"n"`         //数字通道序号
+	Timestamp uint32  `json:"timestamp"` //数字通道时标
+	Data      []uint8 `json:"data"`      //数字通道数据
 }
 
-func (cd *ComtradeData) GetAnalogData() []ComtradeAnalogData {
+func (cd *Data) GetAnalogData() []AnalogData {
 	return cd.AnalogData
 }
 
-func (cd *ComtradeData) GetDigitalData() []ComtradeDigitalData {
+func (cd *Data) GetDigitalData() []DigitalData {
 	return cd.DigitalData
 }

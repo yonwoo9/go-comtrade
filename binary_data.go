@@ -35,8 +35,8 @@ func init() {
 type BinaryData struct {
 }
 
-func (b *BinaryData) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*ComtradeData, error) {
-	comtradeData := &ComtradeData{}
+func (b *BinaryData) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*Data, error) {
+	comtradeData := &Data{}
 
 	// 打开文件
 	file, err := os.Open(filePath)
@@ -45,8 +45,8 @@ func (b *BinaryData) Parse(filePath string, analogNum, digitalNum, endSamp uint3
 	}
 	defer file.Close()
 
-	comtradeData.AnalogData = make([]ComtradeAnalogData, int(endSamp))
-	comtradeData.DigitalData = make([]ComtradeDigitalData, int(endSamp))
+	comtradeData.AnalogData = make([]AnalogData, int(endSamp))
+	comtradeData.DigitalData = make([]DigitalData, int(endSamp))
 
 	for i := 0; i < int(endSamp); i++ {
 		comtradeData.AnalogData[i].Data = make([]int32, analogNum)

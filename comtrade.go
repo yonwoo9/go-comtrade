@@ -2,12 +2,12 @@ package comtrade
 
 type Comtrade struct {
 	Conf *ComtradeCfg
-	Data *ComtradeData
+	Data *Data
 }
 
-func ParseComtrade(configfilePath, datafilePath string) (comtrade *Comtrade, err error) {
+func ParseComtrade(configurePath, datafilePath string) (comtrade *Comtrade, err error) {
 	c := &Comtrade{}
-	c.Conf, err = c.parseComtradeConfig(configfilePath)
+	c.Conf, err = c.parseComtradeConfig(configurePath)
 	if err != nil {
 		return nil, err
 	}
@@ -18,18 +18,18 @@ func ParseComtrade(configfilePath, datafilePath string) (comtrade *Comtrade, err
 	return c, nil
 }
 
-func (c *Comtrade) parseComtradeConfig(configfilePath string) (*ComtradeCfg, error) {
-	comtradeConfig, err := ParseComtradeCfg(configfilePath)
+func (c *Comtrade) parseComtradeConfig(configurePath string) (*ComtradeCfg, error) {
+	comtradeConfig, err := ParseComtradeCfg(configurePath)
 	if err != nil {
 		return nil, err
 	}
 	return comtradeConfig, nil
 }
 
-func (c *Comtrade) parseComtradeData(datafilePath string) (*ComtradeData, error) {
+func (c *Comtrade) parseComtradeData(datafilePath string) (*Data, error) {
 	creator, ok := Parsers[c.Conf.Ft]
 	if !ok {
-		return nil, ErrUnknowTypeOfData
+		return nil, ErrUnknownTypeOfData
 	}
 	parser := creator()
 	comtradeData, err := parser.Parse(datafilePath, c.Conf.GetAnalogNum(), c.Conf.GetDigtalNum(), c.Conf.GetEndSamp()[len(c.Conf.GetEndSamp())-1])

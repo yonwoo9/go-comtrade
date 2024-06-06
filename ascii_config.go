@@ -61,12 +61,12 @@ func ParseComtradeCfg(filePath string) (*ComtradeCfg, error) {
 	if value, err := strconv.ParseUint(string(bytes.TrimSuffix(bytes.TrimSpace(tempList[2]), []byte("D"))), 10, 64); err != nil {
 		return nil, err
 	} else {
-		comtradeCfg.DigtalNum = uint32(value)
+		comtradeCfg.DigitalNum = uint32(value)
 	}
 
 	// initialize analog and digital channels
-	comtradeCfg.Analog = make([]ComtradeAnalogChan, comtradeCfg.AnalogNum)
-	comtradeCfg.Digital = make([]ComtradeDigitalChan, comtradeCfg.DigtalNum)
+	comtradeCfg.Analog = make([]AnalogChan, comtradeCfg.AnalogNum)
+	comtradeCfg.Digital = make([]DigitalChan, comtradeCfg.DigitalNum)
 
 	// 读取模拟通道 read analog channels
 	for i := 0; i < int(comtradeCfg.AnalogNum); i++ {
@@ -130,7 +130,7 @@ func ParseComtradeCfg(filePath string) (*ComtradeCfg, error) {
 	}
 
 	// read digit channels
-	for i := 0; i < int(comtradeCfg.DigtalNum); i++ {
+	for i := 0; i < int(comtradeCfg.DigitalNum); i++ {
 		tempList = bytes.Split(lines[2+int(comtradeCfg.AnalogNum)+i], []byte(","))
 		if len(tempList) < 3 {
 			return nil, ErrReadDigitalChannel

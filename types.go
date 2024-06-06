@@ -23,5 +23,5 @@ const (
 )
 
 type Parser interface {
-	Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*ComtradeData, error)
+	Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*Data, error)
 }

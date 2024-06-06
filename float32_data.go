@@ -10,6 +10,6 @@ func init() {
 type Float32Data struct {
 }
 
-func (f *Float32Data) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*ComtradeData, error) {
-	return &ComtradeData{}, nil
+func (f *Float32Data) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*Data, error) {
+	return &Data{}, nil
 }

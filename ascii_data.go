@@ -18,8 +18,8 @@ func init() {
 type AsciiData struct {
 }
 
-func (a *AsciiData) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*ComtradeData, error) {
-	comtradeData := &ComtradeData{}
+func (a *AsciiData) Parse(filePath string, analogNum, digitalNum, endSamp uint32) (*Data, error) {
+	comtradeData := &Data{}
 	datFile, err := os.Open(filePath)
 	if err != nil {
 		return nil, err
@@ -35,8 +35,8 @@ func (a *AsciiData) Parse(filePath string, analogNum, digitalNum, endSamp uint32
 		return nil, ErrInvalidFile
 	}
 
-	comtradeData.AnalogData = make([]ComtradeAnalogData, int(endSamp))
-	comtradeData.DigitalData = make([]ComtradeDigitalData, int(endSamp))
+	comtradeData.AnalogData = make([]AnalogData, int(endSamp))
+	comtradeData.DigitalData = make([]DigitalData, int(endSamp))
 
 	for i := 0; i < int(endSamp); i++ {
 		comtradeData.AnalogData[i].Data = make([]int32, analogNum)

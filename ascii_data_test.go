@@ -14,12 +14,12 @@ func TestAsciiData_Parse(t *testing.T) {
 	}
 
 	a := &AsciiData{}
-	dat, err := a.Parse("testdata/test2.dat", cfg.AnalogNum, cfg.DigtalNum, cfg.EndSamp[len(cfg.EndSamp)-1])
+	dat, err := a.Parse("testdata/test2.dat", cfg.AnalogNum, cfg.DigitalNum, cfg.EndSamp[len(cfg.EndSamp)-1])
 	if err != nil {
 		t.Errorf("Parse() error = %v", err)
 		return
 	}
-	if reflect.TypeOf(dat) != reflect.TypeOf(&ComtradeData{}) {
+	if reflect.TypeOf(dat) != reflect.TypeOf(&Data{}) {
 		t.Errorf("Parse() got = %v", dat)
 	}
 	t.Log(dat)
