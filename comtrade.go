@@ -32,7 +32,7 @@ func (c *Comtrade) parseComtradeData(datafilePath string) (*Data, error) {
 		return nil, ErrUnknownTypeOfData
 	}
 	parser := creator()
-	comtradeData, err := parser.Parse(datafilePath, c.Conf.GetAnalogNum(), c.Conf.GetDigtalNum(), c.Conf.GetEndSamp()[len(c.Conf.GetEndSamp())-1])
+	comtradeData, err := parser.Parse(datafilePath, c.Conf.GetAnalogNum(), c.Conf.GetDigitalNum(), c.Conf.GetEndSamp()[len(c.Conf.GetEndSamp())-1])
 	if err != nil {
 		return nil, err
 	}

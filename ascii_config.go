@@ -14,6 +14,8 @@ func ParseComtradeCfg(filePath string) (*ComtradeCfg, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer cfgFile.Close()
+
 	comtradeCfg := &ComtradeCfg{}
 	var tempList [][]byte
 	content, err := io.ReadAll(cfgFile)

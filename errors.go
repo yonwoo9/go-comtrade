@@ -1,6 +1,6 @@
 package comtrade
 
-import "github.com/pkg/errors"
+import "errors"
 
 var (
 	ErrUnknownTypeOfData  = errors.New("unknown type of data")
